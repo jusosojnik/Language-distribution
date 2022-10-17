@@ -1,0 +1,33 @@
+.Navbar {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: fixed;
+  overflow: hidden;
+  background-color: rgb(32, 30, 30);
+}
+
+.Navbar a {
+  color: white;
+  display: block;
+  width: 25%;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease-out 100ms, color 0.3s ease-out 100ms;
+}
+
+.Navbar a:hover {
+  background-color: white;
+  color: black;
+}
+
+div .selected {
+  color: black;
+  background-color: white;
+}
