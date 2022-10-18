@@ -93,16 +93,28 @@ function Learn() {
     function handleChange(value) {
         setInputValue(value);
         if (value == translation) {
+            console.log(value, translation)
+            console.log(words, translations)
             var x = score;
             setScore((x + 1));
             var words2 = words;
             var translations2 = translations;
-            words2.splice(words2.indexOf(word), 1);
-            translations2.splice(translations2.indexOf(translation), 1);
+            if (wordToTranslation) {
+                words2.splice(words2.indexOf(word), 1);
+                translations2.splice(translations2.indexOf(translation), 1);
+            } else {
+                words2.splice(words2.indexOf(translation), 1);
+                translations2.splice(translations2.indexOf(word), 1);
+            }
             setWords(words2);
             setTranslations(translations2);
-            setWord(words2[count]);
-            setTranslation(translations2[count]);
+            if (wordToTranslation) {
+                setWord(words2[count]);
+                setTranslation(translations2[count]);
+            } else {
+                setWord(translations2[count]);
+                setTranslation(words2[count]);
+            }
             setInputValue("");
             setHint(false);
         }
