@@ -17,24 +17,47 @@ function Learn() {
     const [inputValue, setInputValue] = useState("");
     const [hint, setHint] = useState(false);
     const [gameOver, setGameOver] = useState(false);
+    const [wordToTranslation, setWordToTranslation] = useState(true);
 
     function changeCount(e, increase) {
         var x = count
         if (increase) {
             if (x < numOfWords) {
                 setCount((x + 1));
-                setWord(words[x + 1]);
-                setTranslation(translations[x + 1]);
+                if (wordToTranslation) {
+                    setWord(words[x + 1]);
+                    setTranslation(translations[x + 1]);
+                } else {
+                    setWord(translations[x + 1]);
+                    setTranslation(words[x + 1]);
+                }
                 setHint(false);
             }
         } else {
             if (x > 0) {
                 setCount((x - 1));
-                setWord(words[x - 1]);
-                setTranslation(translations[x - 1]);
+                if (wordToTranslation) {
+                    setWord(words[x - 1]);
+                    setTranslation(translations[x - 1]);
+                } else {
+                    setWord(translations[x - 1]);
+                    setTranslation(words[x - 1]);
+                }
                 setHint(false);
             }
         }
+        e.preventDefault();
+    }
+
+    function changeWordToTranslation(e){
+        if (!wordToTranslation) {
+            setWord(words[count]);
+            setTranslation(translations[count]);
+        } else {
+            setWord(translations[count]);
+            setTranslation(words[count]);
+        }
+        setWordToTranslation(!wordToTranslation)
         e.preventDefault();
     }
 
@@ -122,11 +145,16 @@ function Learn() {
                         </div>  
                     </div>
                 </div>}
+                {loaded && <Button text={"🔁"} func={e => changeWordToTranslation(e)}/>}
                 <FileSelect text={"UPLOAD FILE"} func={handleFileChosen}/>
                 {gameOver && <div className="histogram-container">
-                        {words.map((word, index) => (
-                            <p>{word + " - " + translations[index]}</p>
-                        ))}
+                        {wordToTranslation ? words.map((word, index) => (
+                                <p>{word + " - " + translations[index]}</p>
+                        )) :
+                        words.map((word, index) => (
+                            <p>{translations[index] + " - " + word}</p>
+                        ))
+                        }
                 </div>}
             </div>
         </div>
