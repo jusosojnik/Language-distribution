@@ -93,8 +93,6 @@ function Learn() {
     function handleChange(value) {
         setInputValue(value);
         if (value == translation) {
-            console.log(value, translation)
-            console.log(words, translations)
             var x = score;
             setScore((x + 1));
             var words2 = words;
