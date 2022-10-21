@@ -136,14 +136,19 @@ function Learn() {
                 {loaded && <div className="learn">
                     <div className="word-bar">
                         <div className="hint">
-                            <label htmlFor="words">{word}</label>
-                            <span className="translation">
-                                {hint && <span>
-                                    {translation}
-                                </span>}
-                                <Button text={"Give Up"} func={giveUp}></Button>
-                                <Button text={"?"} func={showHint}></Button>
-                            </span>
+                            <div className="translation">
+                                <span>
+                                    {word}
+                                </span>
+                                <span>
+                                    
+                                    {hint && <span>
+                                        {translation}
+                                    </span>}
+                                    <Button text={"Give Up"} func={giveUp}></Button>
+                                    <Button text={"?"} func={showHint}></Button>
+                                </span>
+                            </div>
                         </div>
                         <div>
                             <input id="words" type="text" value={inputValue} onChange={e => handleChange(e.target.value.toLowerCase())}/>

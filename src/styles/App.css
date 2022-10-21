@@ -105,7 +105,21 @@ body {
     justify-content: space-between;
 }
 
+.translation {
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 .translation span {
+    font-size: large;
+    display : flex;
+    align-items : center;
+}
+
+.translation span span {
     margin-right: 5px;
     font-size: large;
+    display : flex;
+    align-items : center;
 }
