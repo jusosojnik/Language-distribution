@@ -136,7 +136,7 @@ function Create() {
                     </div>
                 </div>
 
-                <FileSelect text={"CREATE HISTOGRAM"} func={handleFileChosen}/>
+                <FileSelect text={"CREATE WORDLIST"} func={handleFileChosen}/>
 
                 <div className="histogram-container">
                         {histogram.map(text => (

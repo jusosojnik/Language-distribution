@@ -157,7 +157,7 @@ function Learn() {
                 </div>}
                 {loaded && <Button text={"🔁"} func={e => changeWordToTranslation(e)}/>}
                 <FileSelect text={"UPLOAD FILE"} func={handleFileChosen}/>
-                {gameOver && <div className="histogram-container">
+                {(gameOver && words.length > 1) && <div className="histogram-container">
                         {wordToTranslation ? words.map((word, index) => (
                                 <p>{word + " - " + translations[index]}</p>
                         )) :
